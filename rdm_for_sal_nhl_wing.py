@@ -59,3 +59,21 @@ plot_tree(predictor.estimators_[5])
 plt.show()
 plot_tree(new_prediction.estimators_[5])
 plt.show()
+
+errors = abs(sal_predict - y_val)
+errors_2 = abs(improve_pred - y_val)
+
+err_pct_1 = 100 * (errors/y_val)
+err_pct_2 = 100 * (errors_2/y_val)
+
+accuracy_1 = 100 - np.mean(err_pct_1)
+accuracy_2 = 100 - np.mean(err_pct_2)
+
+print("Accuracy score 1: ", round(accuracy_1, 2), "%")
+print("Accuracy score 2: ", round(accuracy_2, 2), "%")
+
+mse = sm.mean_absolute_error(y_val, sal_predict)
+mse2 = sm.mean_absolute_error(y_val, improve_pred)
+
+print("Mean absolute error 1: ", mse)
+print("Mean absolute error 2: ", mse2)
