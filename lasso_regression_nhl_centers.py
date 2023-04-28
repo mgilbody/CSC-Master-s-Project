@@ -53,6 +53,21 @@ def lasso_regression(a):
 
     print("First R^2 = " + str(sm.r2_score(y_test, salary_prediction)))
     print("Second R^2 = " + str(sm.r2_score(y_test, new_salary_prediction)))
+    
+    errors = abs(salary_prediction - y_test)
+    errors_2 = abs(new_salary_prediction - y_test)
+
+    err_pct_1 = 100 * (errors / y_test)
+    err_pct_2 = 100 * (errors_2 / y_test)
+
+    accuracy_1 = 100 - np.mean(err_pct_1)
+    accuracy_2 = 100 - np.mean(err_pct_2)
+
+    print("Accuracy score 1: ", round(accuracy_1, 2), "%")
+    print("Accuracy score 2: ", round(accuracy_2, 2), "%")
+
+    mse = sm.mean_absolute_error(y_test, salary_prediction)
+    mse2 = sm.mean_absolute_error(y_test, new_salary_prediction)
 
 
 
