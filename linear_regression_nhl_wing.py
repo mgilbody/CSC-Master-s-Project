@@ -48,6 +48,24 @@ def multiple_linear_regression(a):
     print(outcome_2.head())
     print("First R^2 = " + str(sm.r2_score(y_test, sal_predict)))
     print("New R^2 = " + str(sm.r2_score(y_test, second_prediction)))
+    
+    errors = abs(sal_predict - y_test)
+    errors_2 = abs(second_prediction - y_test)
+
+    err_pct_1 = 100 * (errors / y_test)
+    err_pct_2 = 100 * (errors_2 / y_test)
+
+    accuracy_1 = 100 - np.mean(err_pct_1)
+    accuracy_2 = 100 - np.mean(err_pct_2)
+
+    print("Accuracy score 1: ", round(accuracy_1, 2), "%")
+    print("Accuracy score 2: ", round(accuracy_2, 2), "%")
+
+    mse = sm.mean_absolute_error(y_test, sal_predict)
+    mse2 = sm.mean_absolute_error(y_test, second_prediction)
+
+    print("Mean absolute error 1: ", mse)
+    print("Mean absolute error 2: ", mse2)
 
 
 
